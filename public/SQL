@@ -1,0 +1,265 @@
+-- =====================================
+-- Table: admin
+-- Description: Stores admin login details
+-- =====================================
+
+DROP TABLE IF EXISTS `admin`;
+
+CREATE TABLE `admin` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `role` VARCHAR(20) DEFAULT 'admin',
+    
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username_unique` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+-- =====================================
+-- TABLE: card_requests
+-- Description: Stores users' card application requests
+-- =====================================
+
+DROP TABLE IF EXISTS `card_requests`;
+
+CREATE TABLE `card_requests` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `card_type` VARCHAR(50) NOT NULL,
+    `status` ENUM('Pending','Approved','Rejected') DEFAULT 'Pending',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- =====================================
+-- TABLE: investments
+-- Description: Stores user investment plans and details
+-- =====================================
+
+DROP TABLE IF EXISTS `deposits`;
+
+CREATE TABLE `deposits` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `plan_name` VARCHAR(50) NOT NULL,
+    `amount` DECIMAL(15,2) NOT NULL,
+    `daily_percent` DECIMAL(5,2) NOT NULL,
+    `start_date` DATETIME NOT NULL,
+    `status` VARCHAR(20) DEFAULT 'Active',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- =====================================
+-- TABLE: plans
+-- Description: Stores available investment plans
+-- =====================================
+
+DROP TABLE IF EXISTS `investment_plans`;
+
+CREATE TABLE `investment_plansplans` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(50) NOT NULL,
+    `roi` DECIMAL(5,2) NOT NULL COMMENT 'Return on investment percentage',
+    `duration_days` INT(11) NOT NULL COMMENT 'Plan duration in days',
+
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- =====================================
+-- TABLE: user_verifications
+-- Description: Stores user ID verification / KYC documents
+-- =====================================
+
+DROP TABLE IF EXISTS `kyc`;
+
+CREATE TABLE `kyc` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `fullname` VARCHAR(100) DEFAULT NULL,
+    `id_type` VARCHAR(50) DEFAULT NULL COMMENT 'Type of ID (e.g., National ID, Passport)',
+    `id_number` VARCHAR(100) DEFAULT NULL,
+    `document` VARCHAR(255) DEFAULT NULL COMMENT 'Path to uploaded document',
+    `status` VARCHAR(20) DEFAULT 'Pending',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- =====================================
+-- TABLE: referrals
+-- Description: Tracks user referral relationships and bonuses
+-- =====================================
+
+DROP TABLE IF EXISTS `referral_bonus`;
+
+CREATE TABLE `referral_bonus` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL COMMENT 'ID of the referring user',
+    `referred_user_id` INT(11) NOT NULL COMMENT 'ID of the referred user',
+    `amount` DECIMAL(10,2) NOT NULL COMMENT 'Referral bonus amount',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`),
+    KEY `referred_user_id_index` (`referred_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+-- =====================================
+-- TABLE: transactions
+-- Description: Stores all user financial transactions
+-- =====================================
+
+DROP TABLE IF EXISTS `transactions`;
+
+CREATE TABLE `transactions` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) DEFAULT NULL,
+    `type` VARCHAR(50) DEFAULT NULL COMMENT 'Deposit, Withdrawal, Investment etc.',
+    `amount` DECIMAL(12,2) DEFAULT NULL,
+    `status` VARCHAR(20) DEFAULT NULL COMMENT 'Pending, Approved, Rejected',
+    `plan_name` VARCHAR(100) DEFAULT NULL,
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `method` VARCHAR(20) NOT NULL DEFAULT 'Bank',
+    `wallet_type` VARCHAR(50) NOT NULL,
+    `account_details` TEXT DEFAULT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `start_date` DATETIME DEFAULT NULL,
+    `daily_percent` DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    `duration_days` INT(11) DEFAULT 7,
+    `end_date` DATETIME DEFAULT NULL,
+    `last_profit_update` DATETIME DEFAULT NULL,
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- =====================================
+-- TABLE: withdrawals
+-- Description: Stores user withdrawal transactions
+-- =====================================
+
+DROP TABLE IF EXISTS `transfers`;
+
+CREATE TABLE `transfers` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `sender_id` INT(11) NOT NULL COMMENT 'User initiating withdrawal',
+    `receiver_id` INT(11) NOT NULL COMMENT 'Bank or receiving entity',
+    `amount` DECIMAL(12,2) NOT NULL,
+    `note` VARCHAR(255) DEFAULT NULL,
+    `status` ENUM('Completed','Failed') DEFAULT 'Completed',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    KEY `sender_id_index` (`sender_id`),
+    KEY `receiver_id_index` (`receiver_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- =====================================
+-- TABLE: users
+-- Description: Stores all registered users and their account details
+-- =====================================
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL UNIQUE,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `referral` VARCHAR(50) DEFAULT NULL COMMENT 'Referral code used',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `balance` DECIMAL(12,2) DEFAULT 0.00,
+    `total_deposit` DECIMAL(12,2) DEFAULT 0.00,
+    `total_withdraw` DECIMAL(12,2) DEFAULT 0.00,
+    `total_bonus` DECIMAL(12,2) DEFAULT 0.00,
+    `kyc_status` VARCHAR(20) DEFAULT 'pending',
+    `wallet_address` TEXT DEFAULT NULL,
+    `referral_code` VARCHAR(50) DEFAULT NULL UNIQUE COMMENT 'User’s own referral code',
+    `referred_by` VARCHAR(50) DEFAULT NULL COMMENT 'Referral code of user who referred this user',
+    `withdraw_pin` VARCHAR(255) DEFAULT NULL,
+    `status` VARCHAR(20) NOT NULL DEFAULT 'Active',
+
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- =====================================
+-- TABLE: user_deposits
+-- Description: Tracks user deposits into investment plans and profit details
+-- =====================================
+
+DROP TABLE IF EXISTS `user_investments`;
+
+CREATE TABLE `user_investments` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL COMMENT 'ID of the user making the deposit',
+    `plan_id` INT(11) NOT NULL COMMENT 'ID of the investment plan',
+    `amount` DECIMAL(10,2) NOT NULL COMMENT 'Amount deposited',
+    `start_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `end_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `profit` DECIMAL(10,2) DEFAULT 0.00 COMMENT 'Profit earned so far',
+    `status` VARCHAR(20) DEFAULT 'Active' COMMENT 'Active, Completed, or Closed',
+
+    PRIMARY KEY (`id`),
+    KEY `user_id_index` (`user_id`),
+    KEY `plan_id_index` (`plan_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+UPDATE transactions 
+SET 
+start_date = created_at,
+end_date = DATE_ADD(created_at, INTERVAL duration_days DAY),
+last_profit_update = created_at
+WHERE status='Approved'
+AND start_date IS NULL;;
+
+
+ALTER TABLE users
+ADD COLUMN total_profit DECIMAL(10,2) NOT NULL DEFAULT 0;
+
+ALTER TABLE kyc 
+ADD id_front VARCHAR(255),
+ADD id_back VARCHAR(255);
+
+
+ALTER TABLE kyc 
+ADD dob DATE,
+ADD gender VARCHAR(20),
+ADD nationality VARCHAR(100),
+ADD email VARCHAR(150),
+ADD phone VARCHAR(20),
+ADD address TEXT;
+
+
+ALTER TABLE transactions 
+MODIFY start_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+UPDATE transactions
+SET 
+start_date = created_at,
+end_date = DATE_ADD(created_at, INTERVAL duration_days DAY),
+last_profit_update = created_at
+WHERE id = 54;

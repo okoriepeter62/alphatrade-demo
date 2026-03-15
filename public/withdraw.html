@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withdraw</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f6fa;
+padding:40px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#0b0f2b;
+color:white;
+border:none;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+}
+
+button:hover{
+background:#f9b800;
+color:#0b0f2b;
+}
+
+.notice{
+background:#fffae6;
+border:1px solid #ffd700;
+padding:10px;
+margin-bottom:15px;
+text-align:center;
+}
+
+.success{
+color:green;
+text-align:center;
+margin-top:10px;
+}
+
+.error{
+color:red;
+text-align:center;
+margin-top:10px;
+}
+
+.balance{
+text-align:center;
+margin-top:15px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Request Withdrawal</h2>
+
+<div class="notice">
+⚠️ Demo Mode: Withdrawals are disabled in this demo.
+</div>
+
+<div id="message"></div>
+
+<form onsubmit="return withdrawDemo()">
+
+<input type="number" id="amount" placeholder="Enter Amount ($50 - $20000)" required>
+
+<select required>
+<option value="">Select Withdrawal Method</option>
+<option>Bank Transfer</option>
+<option>Crypto Wallet</option>
+</select>
+
+<textarea placeholder="Enter Bank/Crypto details (optional)"></textarea>
+
+<input type="password" id="pin" placeholder="Enter 4-digit PIN" maxlength="4" required>
+
+<button type="submit">Request Withdraw</button>
+
+</form>
+
+<div class="balance">
+Available to withdraw (including profit): $1575.00
+</div>
+
+</div>
+
+<script>
+
+function withdrawDemo(){
+
+let amount = document.getElementById("amount").value;
+let pin = document.getElementById("pin").value;
+let message = document.getElementById("message");
+
+if(amount < 50 || amount > 20000){
+
+message.innerHTML =
+"<div class='error'>Amount must be between $50 and $20,000</div>";
+
+return false;
+
+}
+
+if(pin.length !== 4){
+
+message.innerHTML =
+"<div class='error'>PIN must be 4 digits</div>";
+
+return false;
+
+}
+
+message.innerHTML =
+"<div class='success'>Demo Mode: Withdrawal request recorded.</div>";
+
+return false;
+
+}
+
+</script>
+
+</body>
+</html>

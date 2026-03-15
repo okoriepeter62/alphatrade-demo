@@ -1,0 +1,89 @@
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Form container */
+form {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Form heading */
+form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0b0f2b;
+}
+
+/* Input fields */
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0b0f2b;
+    outline: none;
+}
+
+/* Textarea adjustments */
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0b0f2b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #f9b800;
+    color: #0b0f2b;
+}
+
+/* Messages */
+.message {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.message.error {
+    background: #ffe2e2;
+    color: #d9534f;
+}
+
+.message.success {
+    background: #e0fbe0;
+    color: #28a745;
+}

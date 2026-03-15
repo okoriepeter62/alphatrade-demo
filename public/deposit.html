@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Make Deposit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f6fa;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:650px;
+margin:50px auto;
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+color:#333;
+}
+
+p{
+text-align:center;
+color:#555;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+button{
+padding:12px 20px;
+background:#2c7be5;
+color:#fff;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.section{
+display:none;
+margin-top:15px;
+}
+
+.success{
+color:green;
+text-align:center;
+margin:10px 0;
+}
+
+.wallet{
+background:#eee;
+padding:10px;
+border-radius:6px;
+font-weight:bold;
+margin:5px 0;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Make Deposit — Silver Plan</h2>
+
+<p>Min: $2,000 | Max: $9,999</p>
+
+<p id="message"></p>
+
+<form onsubmit="return submitDeposit()">
+
+<label>Deposit Method</label>
+
+<select id="methodSelect" required>
+
+<option value="">Select Method</option>
+
+<option value="Bank">Bank Transfer</option>
+
+<option value="Crypto">Crypto Deposit</option>
+
+</select>
+
+<div id="bankSection" class="section">
+
+<h3>Bank Transfer Details</h3>
+
+<p>Bank: <b>GTBank</b></p>
+
+<p>Account Name: <b>InvestPro Ltd</b></p>
+
+<p>Account Number: <b>0123456789</b></p>
+
+<input type="number" placeholder="Enter Amount $">
+
+<button type="submit">Submit Deposit</button>
+
+</div>
+
+
+<div id="cryptoSection" class="section">
+
+<h3>Select Crypto Wallet</h3>
+
+<select>
+
+<option value="">Select Wallet</option>
+
+<option>USDT (Bybit)</option>
+
+<option>USDT (Binance)</option>
+
+<option>Bitcoin</option>
+
+<option>Ethereum</option>
+
+</select>
+
+<h4>Wallet Addresses</h4>
+
+<div class="wallet">USDT Bybit: YourBybitWalletAddressHere</div>
+
+<div class="wallet">USDT Binance: YourBinanceWalletAddressHere</div>
+
+<div class="wallet">BTC: YourBTCAddressHere</div>
+
+<div class="wallet">ETH: YourETHAddressHere</div>
+
+<input type="number" placeholder="Enter Amount $">
+
+<button type="submit">Submit Deposit</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+const methodSelect = document.getElementById("methodSelect");
+
+const bankSection = document.getElementById("bankSection");
+
+const cryptoSection = document.getElementById("cryptoSection");
+
+methodSelect.addEventListener("change",function(){
+
+bankSection.style.display="none";
+
+cryptoSection.style.display="none";
+
+if(this.value==="Bank"){
+
+bankSection.style.display="block";
+
+}
+
+if(this.value==="Crypto"){
+
+cryptoSection.style.display="block";
+
+}
+
+});
+
+
+function submitDeposit(){
+
+document.getElementById("message").innerHTML =
+"<span class='success'>Demo Mode: Deposit submitted successfully. Await admin approval.</span>";
+
+return false;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #0b0f2b;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+    border-right: 2px solid #1f253e;
+}
+
+.sidebar h2.logo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #f9b800;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background: #1f253e;
+}
+
+.sidebar a.logout {
+    color: #ff4d4d;
+    margin-top: auto;
+    font-weight: bold;
+}
+
+/* Main content */
+.main {
+    margin-left: 260px;
+    padding: 25px;
+}
+
+/* Top bar */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.topbar h3 {
+    font-size: 20px;
+    color: #0b0f2b;
+}
+
+.hamburger {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Balance Card */
+.balance h2 {
+    font-size: 22px;
+    color: #0b0f2b;
+    margin-bottom: 10px;
+}
+
+.balance h1 {
+    font-size: 36px;
+    color: #f9b800;
+}
+
+/* Stats Grid */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stats div {
+    background: #e7eaf1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.stats div:hover {
+    background: #d0d5e1;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #f9f9f9;
+    font-weight: 600;
+}
+
+/* Table footer */
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.table-footer button {
+    padding: 6px 12px;
+    border: none;
+    background: #0b0f2b;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-footer button:hover {
+    background: #f9b800;
+    color: #0b0f2b;
+}
+
+/* Form inputs & buttons */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #0b0f2b;
+    outline: none;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #0b0f2b;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #f9b800;
+    color: #0b0f2b;
+}
+
+/* Investment & Referral sections */
+.card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.card ul li {
+    margin-bottom: 10px;
+}
+
+.card ul li a {
+    color: #0b0f2b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.card ul li a:hover {
+    color: #f9b800;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}

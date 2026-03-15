@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Investment Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2 class="logo">💰 Alphatrade</h2>
+
+<a href="dashboard.html">Dashboard</a>
+<hr>
+
+<a href="deposit.html">Make Deposit</a>
+<a href="withdraw.html">Withdraw</a>
+<a href="transfer.html">Transfer</a>
+
+<hr>
+
+<a href="transaction.html">Transactions</a>
+<a href="#">Card Application</a>
+
+<hr>
+
+<a href="index.html" style="color:red;">Logout</a>
+
+</div>
+
+
+<div class="main">
+
+<div class="topbar">
+<h3>Welcome, Demo User</h3>
+</div>
+
+<div style="background:#fffae6;padding:10px;text-align:center;margin-bottom:10px;border:1px solid #ffd700;">
+⚠️ Demo Account – No real transactions
+</div>
+
+
+<div class="card balance">
+<h2>Balance</h2>
+<h1>$1500.00</h1>
+
+<p>
+Live Profit Counter:
+$<span id="counter">75.00</span>
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Active Investments</h3>
+
+<table>
+
+<tr>
+<th>Plan</th>
+<th>Amount</th>
+<th>Profit</th>
+<th>Ends</th>
+</tr>
+
+<tr>
+<td>Gold</td>
+<td>$1000</td>
+<td>$50</td>
+<td>2026-03-15</td>
+</tr>
+
+<tr>
+<td>Silver</td>
+<td>$500</td>
+<td>$25</td>
+<td>2026-03-12</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="card stats">
+
+<div>Total Withdrawal: $200</div>
+
+<div>Total Deposit: $2000</div>
+
+<div>Total Bonus: $150</div>
+
+<div>Total Transactions: 5</div>
+
+</div>
+
+
+<div class="card">
+<h3>KYC Status</h3>
+<p>Approved</p>
+<button>KYC Completed</button>
+</div>
+
+
+<div class="card">
+<h3>Wallet Address</h3>
+<p>Add wallet to receive payments.</p>
+<button>Add Wallet</button>
+</div>
+
+
+<div class="card">
+
+<h3>Your Referral Info</h3>
+
+<p><strong>Referral Code:</strong> DEMO123</p>
+
+<p><strong>Total Referral Bonuses:</strong> $150</p>
+
+<h4>Users you referred:</h4>
+
+<ul>
+<li>AliceDemo</li>
+<li>BobDemo</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<script>
+
+let counter = 75;
+let increment = 0.75;
+
+function animateCounter(){
+
+counter += increment;
+
+document.getElementById("counter").innerText =
+counter.toFixed(2);
+
+}
+
+setInterval(animateCounter,1000);
+
+</script>
+
+</body>
+</html>

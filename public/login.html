@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="login.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Page Background */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0b0f2b,#1c2f5e);
+}
+
+/* Login Container */
+.login-box{
+background:#ffffff;
+padding:40px;
+width:100%;
+max-width:380px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+text-align:center;
+}
+
+/* Title */
+.login-box h2{
+margin-bottom:25px;
+color:#0b0f2b;
+}
+
+/* Inputs */
+.login-box input{
+width:100%;
+padding:12px 14px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+transition:0.2s;
+}
+
+.login-box input:focus{
+border-color:#2c7be5;
+outline:none;
+box-shadow:0 0 4px rgba(44,123,229,0.3);
+}
+
+/* Forgot password */
+.forgot{
+text-align:right;
+margin-bottom:15px;
+}
+
+.forgot a{
+font-size:13px;
+color:#2c7be5;
+text-decoration:none;
+}
+
+.forgot a:hover{
+text-decoration:underline;
+}
+
+/* Button */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#2c7be5;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+background:#1a5fc4;
+}
+
+/* Links */
+.links{
+margin-top:15px;
+font-size:14px;
+}
+
+.links a{
+color:#2c7be5;
+text-decoration:none;
+margin:0 6px;
+}
+
+.links a:hover{
+text-decoration:underline;
+}
+
+/* Error Message */
+.error{
+color:#d9534f;
+font-size:14px;
+margin-bottom:10px;
+}
+</style>
+<body>
+
+<div class="login-box">
+<h2>Login</h2>
+
+<p id="error" class="error"></p>
+
+<form onsubmit="return loginUser()">
+
+<input type="text" id="username" placeholder="Username" required>
+
+<input type="password" id="password" placeholder="Password" required>
+
+<div class="forgot">
+<a href="#">Forgot password?</a>
+</div>
+
+<button type="submit">Log In</button>
+
+</form>
+
+<div class="links">
+<a href="index.html">Home</a>
+<a href="signup.html">Sign Up</a>
+</div>
+
+</div>
+
+<script>
+
+function loginUser(){
+
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+
+if(username === "demo" && password === "demo123"){
+
+window.location.href = "dashboard.html";
+
+return false;
+
+}else{
+
+document.getElementById("error").innerHTML = "Invalid username or password";
+
+return false;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

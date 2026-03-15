@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>All Transactions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f8;
+padding:40px;
+}
+
+h2{
+text-align:center;
+}
+
+table{
+width:80%;
+margin:auto;
+border-collapse:collapse;
+background:white;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+th,td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+th{
+background:#2c7be5;
+color:white;
+}
+
+.status-approved{
+color:green;
+font-weight:bold;
+}
+
+.status-pending{
+color:orange;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>All Transactions</h2>
+
+<table>
+
+<tr>
+<th>Type</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+<tr>
+<td>Deposit</td>
+<td>$1,000.00</td>
+<td class="status-approved">Approved</td>
+<td>2026-03-01</td>
+</tr>
+
+<tr>
+<td>Investment</td>
+<td>$1,000.00</td>
+<td class="status-approved">Approved</td>
+<td>2026-03-02</td>
+</tr>
+
+<tr>
+<td>Profit</td>
+<td>$75.00</td>
+<td class="status-approved">Approved</td>
+<td>2026-03-05</td>
+</tr>
+
+<tr>
+<td>Withdraw</td>
+<td>$200.00</td>
+<td class="status-pending">Pending</td>
+<td>2026-03-07</td>
+</tr>
+
+</table>
+
+</body>
+</html>

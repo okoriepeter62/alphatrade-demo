@@ -1,0 +1,462 @@
+/* GLOBAL */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#fefeff;
+color:#222;
+overflow-x:hidden;
+}
+
+/* LANGUAGE SELECTOR */
+
+.language-header{
+display:flex;
+align-items:center;
+padding:10px 20px;
+margin-bottom:40px;
+}
+
+.language-box{
+max-height:40px;
+overflow:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
+background:#fefeff;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo{
+font-size:20px;
+font-weight:bold;
+}
+
+.navbar ul{
+display:flex;
+list-style:none;
+gap:25px;
+flex:1;
+justify-content:center;
+}
+
+.navbar ul li a{
+text-decoration:none;
+color:#222;
+font-weight:500;
+}
+
+.navbar ul li a:hover{
+color:#8b4dff;
+}
+
+/* RIGHT BUTTONS */
+
+.nav-right{
+display:flex;
+gap:10px;
+}
+
+.nav-right a{
+padding:6px 14px;
+border-radius:4px;
+text-decoration:none;
+font-weight:500;
+}
+
+.nav-right .login{
+border:1px solid #8b4dff;
+color:#8b4dff;
+}
+
+.nav-right .login:hover{
+background:#8b4dff;
+color:white;
+}
+
+.nav-right .get-started{
+background:#8b4dff;
+color:white;
+}
+
+.nav-right .get-started:hover{
+background:#5f0df8;
+}
+
+
+
+.ticker-wrapper{
+background:#fff;
+width:100%;
+padding:8px 0;
+margin-top:80px;
+border-top:1px solid #ddd;
+border-bottom:1px solid #ddd;
+}
+
+.ticker{
+overflow:hidden;
+white-space:nowrap;
+}
+
+.ticker-track{
+display:flex;
+}
+
+.ticker-item{
+display:flex;
+align-items:center;
+padding:0 20px;
+}
+
+.ticker-logo{
+width:26px;
+height:26px;
+margin-right:8px;
+border-radius:50%;
+}
+
+.symbol{font-weight:bold;font-size:14px;}
+.price{font-size:13px;}
+.change{font-size:12px;}
+.change.positive{color:green;}
+.change.negative{color:red;}
+
+
+
+.services-section{
+width:100%;
+padding:40px 20px;
+background:#f7f7f7;
+}
+
+.medical{
+text-align:center;
+margin-bottom:40px;
+color:#d1cbcb;
+}
+
+.medical h2{
+font-size:32px;
+}
+
+/* ROWS */
+
+.first-row,
+.second-row{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+/* BOX */
+
+.box{
+flex:1 1 300px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.08);
+}
+
+.box h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.box p{
+margin-bottom:15px;
+line-height:1.5;
+}
+
+.box span{
+display:block;
+width:100%;
+height:3px;
+background:#f0f4ff;
+margin-top:40px;
+}
+
+
+footer {
+  width: 100%;
+  background: #fefdfd;
+  padding: 50px 40px;
+  box-sizing: border-box;
+}
+
+/* BNB logos: center & wrap on small screens */
+.bnb {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.bnb img {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Main 3-column layout */
+.main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* LEFT COLUMN */
+.left {
+  flex: 1;
+  min-width: 220px;
+}
+.service .logo {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.service p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+/* MIDDLE LINKS */
+.middle {
+  flex: 2;
+  min-width: 250px;
+}
+.servic {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px 40px;
+  margin-top: 20px;
+}
+.servic a {
+  text-decoration: none;
+  color: #141414;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-top: 10px;
+}
+.servic a:hover {
+  color: #8b4dff;
+}
+.servic .us {
+  font-weight: bold;
+  color: #8b4dff;
+}
+.servic .us:hover {
+  color: #141414;
+}
+
+/* RIGHT COLUMN */
+.right {
+  flex: 1;
+  min-width: 200px;
+}
+.servi {
+  margin-top: 20px;
+}
+.servi a {
+  text-decoration: none;
+  background: #986cff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 15px 30px;
+  font-size: 16px;
+  display: inline-block;
+}
+.servi a:hover {
+  background: #7f4afa;
+}
+
+/* Bottom Row */
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.support {
+  display: flex;
+  flex-direction: column;
+}
+.support p {
+  margin: 0 0 5px 0;
+  font-size: 15px;
+}
+.channel {
+  display: flex;
+  gap: 10px;
+  background: #e8e8e8;
+  padding: 2px 20px;
+  border-radius: 40px;
+  color: #7a557a;
+  cursor: pointer;
+}
+.channel:hover {
+  color: #bc69bc;
+}
+.reserv p {
+  text-align: center;
+  margin: 0;
+}
+.terms a {
+  text-decoration: none;
+  color: #7a557a;
+  font-size: 16px;
+}
+.terms a:hover {
+  color: #bc69bc;
+}
+
+/* ==============================
+   RESPONSIVE
+=================================*/
+
+/* TABLET: 1024px */
+@media (max-width: 1024px) {
+  .bnb img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .main-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .left, .middle, .right {
+    width: 100%;
+  }
+  .servic {
+    grid-template-columns: repeat(2, auto);
+    margin-right: 0;
+  }
+  .servi {
+    margin-top: 30px;
+  }
+}
+
+/* MOBILE: 768px */
+@media (max-width: 768px) {
+  .bnb {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .bnb img {
+    max-width: 200px;
+  }
+  .servic {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .servi a {
+    width: 100%;
+    text-align: center;
+  }
+  .bottom-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .channel {
+    margin: auto;
+  }
+}
+
+/* SMALL MOBILE: 480px */
+@media (max-width: 480px) {
+  .bnb img {
+    max-width: 150px;
+  }
+  .servic {
+    grid-template-columns: 1fr;
+  }
+  .servi a {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}
+
+
+@media (max-width:768px){
+
+.navbar ul{
+display:none;
+flex-direction:column;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+background:white;
+padding:15px;
+}
+
+.navbar ul.active{
+display:flex;
+}
+
+.nav-right{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+
+/* hero */
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+/* services */
+
+.first-row,
+.second-row{
+flex-direction:column;
+}
+
+/* footer */
+
+.servic{
+grid-template-columns:1fr;
+}
+
+.bottom-row{
+flex-direction:column;
+text-align:center;
+}
+
+.servi a{
+width:100%;
+text-align:center;
+}
+
+}
