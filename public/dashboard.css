@@ -92,6 +92,20 @@ body {
     transform: translateY(-2px);
 }
 
+.actions button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  background: #2d89ef;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #1b5fbd;
+}
+
 /* Balance Card */
 .balance h2 {
     font-size: 22px;
